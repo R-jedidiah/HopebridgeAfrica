@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+    <h1>{{ home.name }}</h1>
+    <img src="{{ home.image.url }}" alt="{{ home.name }} image" width="500">
+    <p>Location: {{ home.location }}</p>
+    <p>Map Area: {{ home.map_area }}</p>
+    <p>Number of Children: {{ home.num_children }}</p>
+    <p>Age Group: {{ home.age_group }}</p>
+    <p>Main Challenges: {{ home.challenges }}</p>
+    <p>Activities: {{ home.activities }}</p>
+{% endblock %}

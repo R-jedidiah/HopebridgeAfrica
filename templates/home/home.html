@@ -1,0 +1,103 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block content %}
+  <nav class="navbar navbar-expand-md navbar-light py-1" style="background-color: rgb(8, 63, 21);">
+    <div class="container" style="padding-left: 3cm; display: flex;">
+      <a class="navbar-brand text-dark"><img src="{% static 'image/navimage.png' %}" alt="Logo" class="d-inline-block align-text-top" style="width: 1.5cm; height: 1.5cm; border-radius: 50%; border-style: solid; border-color: aliceblue"><h1 style="color: rgb(228, 117, 26);">HopebridgeAfrica</h1></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </div>  
+      <div class="navbar-collapse" style="padding-right: 1cm;" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item active">
+            <a class="btn btn-outline-white text-white" href="{% url 'home' %}">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="btn btn-outline-white text-white" href="#">Donate</a>
+          </li>
+          <li class="nav-item">
+            <a class="btn btn-outline-white text-white" href="#">RequestHelp</a>
+          </li>
+          <li class="nav-item">
+            <a class="btn btn-outline-white text-white" href="{% url 'signup' %}">SignUp</a>
+          </li>
+          <li class="nav-item">
+            <a class="btn btn-outline-white text-white" href="{% url 'categories' %}">Categories</a>
+          </li>
+          <li class="nav-item">
+            <a class="btn btn-outline-white text-white" href="{% url 'signin' %}">SignIn</a>
+          </li>
+        </ul>
+      </div>
+  </nav>
+
+  <div class="jumbotron jumbotron-fluid bg-image text-white py-5" style="background-image: url(static/image/home.png); height: 350px; width: 400vb;">
+    <div class="mask" style="background-color: hsla(0, 0%, 0%, 0.9)"></div>
+    <div class="container" style="float: left;">
+      <h1 class="display-4" style="font: bolder;">Welcome to HopebridgeAfrica Platform</h1>
+      <p class="lead">Connect with donors and receive help in times of need</p>
+      <hr class="bg-secondary my-4">
+      <p>Join our community today and make a difference in the lives of others</p>
+      <a class="btn btn-primary btn-lg" href="{% url 'signup' %}">Sign Up Now</a>
+    </div>
+  </div>
+
+  <div class="container py-5">
+    <div class="row">
+      <div class="col-md-4">
+        <h2 class="text-success">Donate</h2>
+        <p>Make a difference by donating to those in need. You can donate money, food, clothes, and other essential items.</p>
+        <a class="btn btn-outline-success" href="#">Donate Now</a>
+      </div>
+      <div class="col-md-4">
+        <h2 class="text-success">Request Help</h2>
+        <p>If you're in need of help, you can request it from our community of donors. You can request money, food, clothes, and other essential items.</p>
+        <a class="btn btn-outline-success" href="{ %url 'requesthelp' %}">Request Help</a>
+      </div>
+      <div class="col-md-4">
+        <h2 class="text-success">Join Our Community</h2>
+        <p>Join our community of donors and recipients today. You can make a difference in the lives of others and receive help when you need it.</p>
+        <a class="btn btn-outline-success" href="{% url 'signup' %}">Join Now</a>
+      </div>
+    </div>
+  </div>
+
+  <footer class=" py-2" style="background-color: rgb(7, 49, 7);">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4">
+          <h4 style="color: rgb(238, 109, 3);">Connect with Us</h4>
+          <ul class="list-unstyled">
+            <li style="color: aliceblue;"><i class="fas fa-envelope"></i> info@hopebridgeafrica.com</li>
+            <li style="color: aliceblue;"><i class="fas fa-phone" ></i>(+254)-741-790-304</li>
+            <li><i class="fab fa-twitter"></i> <a href="{% url 'home' %}">@hopebridgeafrica</a></li>
+            <li><i class="fab fa-facebook"></i> <a href="{% url 'home' %}">HopebridgeAfrica</a></li>
+            <li><i class="fab fa-instagram" ></i> <a href="{% url 'home' %}">@hopebridgeafrica</a></li>
+          </ul>
+        </div>
+        <div class="col-md-4">
+          <h4 style="color: rgb(238, 109, 3);">Quick Links</h4>
+          <ul class="list-unstyled">
+            <li><a href="{% url 'home' %}">Home</a></li>
+            <li><a href="#">Donate</a></li>
+            <li><a href="#">Request Help</a></li>
+            <li><a href="{% url 'signup' %}">Sign Up</a></li>
+            <li><a href="#">Contact Us</a></li>
+          </ul>
+        </div>
+        <div class="col-md-4">
+          <h4 style="color: rgb(238, 109, 3);">About Us</h4>
+          <p style="color: white;">HopebridgeAfrica is a platform dedicated to helping people in need. Our mission is to connect donors with those who need help and to make a difference in the lives of others. Join our community today and be a part of the change.</p>
+        </div>
+      </div>
+    </div>
+    <div class="text-center text-muted mt-3">
+      <p style="color: aliceblue;">&copy; 2023 HopebridgeAfrica. All rights reserved.</p>
+    </div>
+  </footer>
+  
+{% endblock %}
+

@@ -1,0 +1,159 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+<nav class="navbar navbar-expand-md navbar-light py-1" style="display: flex; padding-left: 2.5cm; background-color: rgb(18, 65, 11);">
+  <div class="container">
+    <a class="navbar-brand text-dark"><img src="{% static 'image/navimage.png' %}" alt="Logo" class="d-inline-block align-text-top" style="width: 1.5cm; height: 1.5cm; border-radius: 50%; border-style: solid; border-color: beige;"><h1 style="color: aliceblue;">HopebridgeAfrica</h1></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  </div>  
+    <div class="collapse navbar-collapse" style="padding-right: 2.5cm;" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item active">
+          <a class="btn btn-outline-white text-white" href="{% url 'home' %}">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="btn btn-outline-white text-white" href="{% url 'signin' %}">signin</a>
+        </li>
+      </ul>
+    </div>
+</nav>  
+
+<div class="jumbotron jumbotron-fluid" style="padding-top: 1cm; background-color: #e4750d;">
+
+
+
+</div>
+
+<!-- Section: Design Block -->
+<section class="background-radial-gradient py-0" style="height: 14cm; margin-top: 1cm;">
+  <style>
+    .background-radial-gradient {
+      background-color: hsl(123, 78%, 11%);
+      background-image: radial-gradient(550px circle at 0% 0%,
+          hsl(120, 48%, 18%) 15%,
+          hsl(222, 29%, 93%) 35%,
+          hsl(218, 89%, 4%) 75%,
+          hsl(29, 87%, 55%) 80%,
+          transparent 100%),
+        radial-gradient(1250px circle at 100% 100%,
+          hsl(218, 41%, 45%) 15%,
+          hsl(122, 83%, 7%) 35%,
+          hsl(246, 78%, 7%) 75%,
+          hsl(218, 89%, 4%) 75%,
+          transparent 100%);
+    }
+
+    #radius-shape-1 {
+      height: 220px;
+      width: 220px;
+      top: -60px;
+      left: -130px;
+      background: radial-gradient(#e68414, #033a0c);
+      overflow: hidden;
+    }
+
+    #radius-shape-2 {
+      border-radius: 38% 62% 63% 37% / 70% 33% 67% 30%;
+      bottom: -60px;
+      right: -110px;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(#113a04, #e68414);
+      overflow: hidden;
+    }
+
+    .bg-glass {
+      background-color: hsla(0, 0%, 100%, 0.9) !important;
+      backdrop-filter: saturate(200%) blur(25px);
+    }
+  </style>
+
+    
+     
+        <!-- <form method="post" class="container bg-glass" style="border: #e4750d; border-radius: 2%; padding: 47px; width: 50%;">
+        {% csrf_token %}
+        {{ form.as_p }}
+
+        <button type="submit">Sign up</button>
+        </form> -->
+    
+      
+        <div class="container py-5">
+          <div class="row">
+            <div class="col-md-6">
+              <form method="post" class="card rounded-3 p-4 p-md-5">
+                <h3 class="mb-4 pb-2 pb-md-0 mb-md-5 px-md-2">Registration Info</h3>
+        
+                {% csrf_token %}                        
+        
+                <div class="form-outline mb-4 row">
+                  <div class="col-md-6">
+                    <input type="text" name="first_name" maxlength="100" required="" id="id_first_name" class="form-control" placeholder="First Name">
+                  </div>
+                  <div class="col-md-6">
+                    <input type="text" name="last_name" maxlength="100" required="" id="id_last_name" class="form-control" placeholder="Last Name">
+                  </div>
+                </div>
+        
+                <div class="form-outline mb-4 row">
+                  <div class="col-md-6">
+                    <input type="text" name="username" maxlength="150" autofocus="" required="" id="id_username" class="form-control" placeholder="Username">
+                  </div>
+                  <div class="col-md-6">
+                    <input type="email" name="email" maxlength="250" required="" id="id_email" class="form-control" placeholder="Email">
+                  </div>
+                </div>
+        
+                <div class="form-outline mb-4 row">
+                  <div class="col-md-6">
+                    <input type="password" name="password1" autocomplete="new-password" required="" id="id_password1" class="form-control" placeholder="Password">
+                  </div>
+                  <div class="col-md-6">
+                    <input type="password" name="password2" autocomplete="new-password" required="" id="id_password2" class="form-control" placeholder="Confirm Password">
+                  </div>
+                </div>
+        
+                <button type="submit" class="btn btn-outline-success">Sign up</button>
+              </form>
+            </div>
+          
+        
+        
+            <div class="col-md-6">
+              <div class="bg-clear px-4 pt-5">
+                <h1 class="my-5 display-5 fw-bold ls-tight" style="color: hsl(177, 57%, 60%);">
+                  Welcome to <br />
+                  <span style="color: hsl(218, 84%, 75%)">HopebridgeAfrica Platform</span>
+                </h1>
+                <p class="mb-4 opacity-70" style="color: hsl(218, 14%, 85%);">
+                  Join our community of donors and recipients today. You can make a difference in the lives of others and receive help when you need it.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+    
+      
+           
+
+     
+
+
+
+        
+            
+              
+             
+        
+    
+   
+  
+</section>  
+
+{% endblock %}
+

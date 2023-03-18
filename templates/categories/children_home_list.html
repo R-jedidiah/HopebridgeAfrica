@@ -1,0 +1,102 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+
+
+
+{% block content %}
+
+<nav class="navbar navbar-expand-md navbar-light py-1" style="background-color: rgb(8, 63, 21);">
+  <div class="container" style="padding-left: 3cm; display: flex;">
+    <a class="navbar-brand text-dark"><img src="{% static 'image/navimage.png' %}" alt="Logo" class="d-inline-block align-text-top" style="width: 1.5cm; height: 1.5cm; border-radius: 50%; border-style: solid; border-color: aliceblue"><h1 style="color: rgb(228, 117, 26);">HopebridgeAfrica</h1></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  </div>  
+    <div class="navbar-collapse" style="padding-right: 1cm;" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item active">
+          <a class="btn btn-outline-white text-white" href="{% url 'home' %}">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="btn btn-outline-white text-white" href="{% url 'categories' %}">Categories</a>
+        </li>
+      </ul>
+    </div>
+</nav>
+
+<div
+ class="bg-image">
+  <style>
+  .bg-image {
+    background-image: url('https://cdn.discordapp.com/attachments/989268285575008376/1086021866361204836/TBS_a_cool_smooth_balck_theme_with_a_heart_sign_of_love_glowing_8917ab09-cef1-4351-a76a-d273c35a9d69.png');
+    background-size: auto;
+    background-position: center;
+    height: 125vh;
+    overflow: hidden;
+  }
+  
+  .blur-bg-image {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.5); /* change the last value to control the amount of blur */
+    backdrop-filter: blur(1.3px); /* adjust the blur radius to your liking */
+    z-index: -1;
+  }
+  
+  </style>
+
+  
+
+<!-- Add your sign in form here -->
+
+ <div class="container py-5">
+  <div class="row">
+    <div class="col-lg-6">
+      <form method="get">
+        <div class="input-group mb-3">
+          <input type="text" class="form-control" id="county" name="county" placeholder="Search by County" value="{{ request.GET.county }}">
+          <button type="submit" class="btn btn-outline-success">Search</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  {% if request.GET.county %}
+  <div class="row">
+    {% for children_home in children_homes %}
+    {% if children_home.county == request.GET.county %}
+    <div class="col-lg-4 mb-4">
+      <div class="card h-100" style="background-color: rgb(236, 224, 205); width: 7cm;">
+        <div class="card-body">
+          <h2 class="card-title">{{ children_home.name }}</h2>
+          <p class="card-text"><strong>Location:</strong> {{ children_home.location }}</p>
+          <p class="card-text"><strong>Email:</strong> {{ children_home.email }}</p>
+          <p class="card-text"><strong>Phone:</strong> {{ children_home.phone }}</p>
+          <p class="card-text"><strong>County:</strong> {{ children_home.county }}</p>
+          <p class="card-text"><strong>Address:</strong> {{ children_home.address }}</p>
+          <a href="#" class="btn btn-outline-success">View More Details</a>
+        </div>
+      </div>
+    </div>
+    {% endif %}
+    {% empty %}
+    <div class="col-lg-12">
+      <p>No results found.</p>
+    </div>
+    {% endfor %}
+  </div>
+  {% endif %}
+ </div>
+</div>
+{% endblock %}
+
+
+
+
+
+

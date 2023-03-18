@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<nav class="navbar navbar-expand-md navbar-light py-1" style="display: flex; padding-left: 2.5cm; background-color: rgb(13, 53, 5);">
+    <div class="container">
+      <a class="navbar-brand text-dark"><img src="{% static 'image/navimage.png' %}" alt="Logo" class="d-inline-block align-text-top" style="width: 1.5cm; height: 1.5cm; border-radius: 50%; border-style: solid; border-color: aliceblue;"><h1 style="color: #ff6219;">HopebridgeAfrica</h1></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </div>  
+      <div class="collapse navbar-collapse" style="padding-right: 2.5cm;" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active">
+            <a class="btn btn-outline-white text-white" href="{% url 'home' %}">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="btn btn-outline-white text-white" href="{% url 'signup' %}">signup</a>
+          </li>
+          <li class="nav-item">
+            <a class="btn btn-outline-white text-white" href="{% url 'signin' %}">signin</a>
+          </li>
+        </ul>
+      </div>
+</nav>  
+<section class="categories" style="background-image: url('https://cdn.discordapp.com/attachments/989268285575008376/1084787250690277436/TBS_a_black_and_yellow_theme_terrain_landscape_8ce5007a-71c6-4123-8a73-ff33f448828a.png'); height: 100vh;">
+  <div class="container">  
+    <div class="row">
+      {% for category in categories %}
+      <div class="col-lg-4 col-md-6 mb-4 py-4" style="display: inline-block;">
+        <div class="card">
+          <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+            <img src="{{ category.image.url }}" class="img-fluid" />
+            <a href="#!">
+              <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+            </a>
+          </div>
+          <div class="card-body">
+            <h4 class="card-title">{{ category.type }}</h4>
+            <p class="card-text">
+              Some quick example text to build on the card title and make up the bulk of the
+              card's content.
+            </p>
+            <a class="btn btn-outline-white text-success" href="{% url 'children_home_list' %}">View More Details</a>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+
+</section>
+
+
+
+
+  
+
+{% endblock %}
