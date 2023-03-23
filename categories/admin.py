@@ -24,3 +24,5 @@ class DonationsAdmin(admin.ModelAdmin):
 
 
 
+
+

@@ -31,16 +31,25 @@ def register(request):
 
 
 def signin(request):
-    if request.method == 'GET':
-        # email = request.GET['email']
-        # password = request.GET['password']
-        user = authenticate(request, email='email', password='password')
-        if user is not None:
-            login(request, user)
-            return redirect('home')
-        else:
-            messages.error(request, 'Invalid email or password')
-    return render(request, 'registration/signin.html')
+    
+    if request.user.is_authenticated:
+        return redirect('/')
+    else:
+        if request.method == 'POST':
+            username = request.POST.get('username')
+            password = request.POST.get('password')
+            user = authenticate(request, username=username, password=password)
+
+            if user is not None:
+                login(request, user)
+                return redirect('/')
+            else:
+                messages.info(request, 'username or password is incorrect!')
+        return render(request, 'registration/login.html')
+    
+def logout_view(request):
+    logout(request)
+    return redirect('home')
 
 
 

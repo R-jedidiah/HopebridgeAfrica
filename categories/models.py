@@ -24,7 +24,7 @@ class Donor(models.Model):
     first_name = models.CharField(max_length=155)
     last_name = models.CharField(max_length=155)
     email = models.EmailField()
-    address = models.CharField(max_length=155, blank=True, null=True)
+    address = models.CharField(max_length=155)
     county = models.CharField(max_length=255)
 
 
@@ -42,6 +42,11 @@ class ChildrenHome(models.Model):
     county = models.CharField(max_length=155)
     address = models.CharField(max_length=155)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    image = models.ImageField(upload_to='categories_media')
+    num_children = models.PositiveIntegerField()
+    age_group = models.CharField(max_length=255)
+    main_challenges = models.TextField()
+    activities = models.TextField()
 
 
     def __str__(self):
@@ -63,16 +68,5 @@ class Donations(models.Model):
     def __str__(self):
         return self.donation_type
     
-class ChildrenHomeDetails(models.Model):
-    name = models.CharField(max_length=255)
-    location = models.CharField(max_length=255)
-    image = models.ImageField(upload_to='children_home_images/')
-    num_children = models.PositiveIntegerField()
-    age_group = models.CharField(max_length=255)
-    main_challenges = models.TextField()
-    activities = models.TextField()
-    ChildrenHome = models.ForeignKey(ChildrenHome, on_delete=models.CASCADE)
 
-    def __str__(self):
-        return self.name
-
+   

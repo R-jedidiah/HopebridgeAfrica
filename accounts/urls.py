@@ -6,4 +6,5 @@ urlpatterns = [
     path('registration/signup', views.register,  name="signup"),
     
     
+    
 ]

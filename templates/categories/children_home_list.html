@@ -7,25 +7,6 @@
 
 {% block content %}
 
-<nav class="navbar navbar-expand-md navbar-light py-1" style="background-color: rgb(8, 63, 21);">
-  <div class="container" style="padding-left: 3cm; display: flex;">
-    <a class="navbar-brand text-dark"><img src="{% static 'image/navimage.png' %}" alt="Logo" class="d-inline-block align-text-top" style="width: 1.5cm; height: 1.5cm; border-radius: 50%; border-style: solid; border-color: aliceblue"><h1 style="color: rgb(228, 117, 26);">HopebridgeAfrica</h1></a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-  </div>  
-    <div class="navbar-collapse" style="padding-right: 1cm;" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item active">
-          <a class="btn btn-outline-white text-white" href="{% url 'home' %}">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="btn btn-outline-white text-white" href="{% url 'categories' %}">Categories</a>
-        </li>
-      </ul>
-    </div>
-</nav>
-
 <div
  class="bg-image">
   <style>
