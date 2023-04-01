@@ -33,7 +33,7 @@ def register(request):
 def signin(request):
     
     if request.user.is_authenticated:
-        return redirect('/')
+        return redirect('home')
     else:
         if request.method == 'POST':
             username = request.POST.get('username')
@@ -42,15 +42,14 @@ def signin(request):
 
             if user is not None:
                 login(request, user)
-                return redirect('/')
+                return redirect('home')
             else:
                 messages.info(request, 'username or password is incorrect!')
-        return render(request, 'registration/login.html')
+        return render(request, 'registration/signin.html')
     
 def logout_view(request):
     logout(request)
-    return redirect('home')
-
+    return redirect('')
 
 
 

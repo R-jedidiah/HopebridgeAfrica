@@ -3,6 +3,7 @@ from categories.models import Category
 from categories.models import ChildrenHome
 from django.shortcuts import render, get_object_or_404
 from .forms import DonorForm
+from .forms import ChildrenHomeForm
 
 
 
@@ -22,9 +23,10 @@ def children_home_list(request):
     }
     return render(request, 'categories/children_home_list.html', context)
 
-def children_home_details(request, pk):
-    home = get_object_or_404(ChildrenHome, pk=pk)
-    return render(request, 'children_home_details.html', {'children_home_details.html': children_home_details})
+def childrenhome_detail(request, pk):
+    childrenhome = get_object_or_404(ChildrenHome, pk=pk)
+    context = {'childrenhome': childrenhome}
+    return render(request, 'categories/childrenhome_detail.html', context)
 
 def donor_create(request):
     form = DonorForm()
@@ -32,12 +34,26 @@ def donor_create(request):
         form = DonorForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('/')
+        return redirect('home')
     
     context = {
         'form':form
     }
     return render(request, 'categories/donor_create.html', context)
+
+def ChildrenHome_create(request):
+    form = ChildrenHomeForm()
+    if request.method == "POST":
+        form = ChildrenHomeForm(request.POST)
+        if form.is_valid():
+            form.save()
+        return redirect('home')
+    
+    context = {
+        'form': form
+    }
+    return render(request, 'categories/childrenhome_create.html', context)
+
 
 
 

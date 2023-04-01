@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+
+
+{% block content %}
+
+<div class="container">
+  <h1>Create Children Home</h1>
+  <hr>
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <div class="form-group">
+      <input type="submit" class="btn btn-primary" value="submit">
+      <a href="{% url 'home' %}" class="btn btn-secondary">Cancel</a>
+    </div>
+  </form>
+</div>
+
+{% endblock %}

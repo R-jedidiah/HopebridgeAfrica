@@ -23,7 +23,7 @@
 
 
 
-<nav class="navbar navbar-expand-md navbar-light py-1 navbar-expand{-sm|-md|-lg|-xl|-xxl}" style="background-color: rgb(6, 41, 14);">
+<nav class="navbar navbar-expand-md navbar-light py-1 navbar-expand-lg" style="background-color: rgb(6, 41, 14);">
     <div class="container" style="padding-left: 3cm; display: flex;">
         <a class="navbar-brand text-dark"><img src="https://cdn.discordapp.com/attachments/997266746379612160/1084044359420350525/Swifty_init_design_the_logo_with_the_letter_h_and_b_a_md_black__df160fb3-66e9-4983-8852-d3792331be15.png " alt="Logo" class="d-inline-block align-text-top" style="width: 1.5cm; height: 1.5cm; border-radius: 50%; border-style: solid; border-color: aliceblue"><h1 style="color: rgb(228, 117, 26);">HopebridgeAfrica</h1></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -32,6 +32,7 @@
     </div>  
         <div class="navbar-collapse" style="padding-right: 1cm;" id="navbarNav">
         <ul class="navbar-nav">
+            {% if user.is_authenticated%}
             <li class="nav-item active">
             <a class="btn btn-outline-white text-white" href="{% url 'home' %}">Home</a>
             </li>
@@ -40,16 +41,24 @@
             </li>
             <li class="nav-item">
             <a class="btn btn-outline-white text-white" href="#">RequestHelp</a>
-            </li>
-            <li class="nav-item">
-            <a class="btn btn-outline-white text-white" href="{% url 'signup' %}">SignUp</a>
+            {% endif %}
             </li>
             <li class="nav-item">
             <a class="btn btn-outline-white text-white" href="{% url 'categories' %}">Categories</a>
             </li>
+            {% if user.is_authenticated %}
+            <li class="nav-item">
+                <a class="btn btn-outline-white text-white" href="{% url 'logout' %}">Logout</a>
+            </li>
+            {% else %}
             <li class="nav-item">
             <a class="btn btn-outline-white text-white" href="{% url 'signin' %}">SignIn</a>
             </li>
+            <li class="nav-item">
+            <a class="btn btn-outline-white text-white" href="{% url 'signup' %}">signup</a>
+            </li>
+            
+            {% endif %}
         </ul>
         </div>
 </nav>

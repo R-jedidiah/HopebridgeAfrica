@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>{{ childrenhome.name }}</h1>
+  <div class="row mx-auto">
+    <div class="jumbotron mx-auto" style="max-width: 80%;">
+      <div class="container">
+          <div class="row">
+              <div class="col-md-4">
+                  <div class="animated-image">
+                      <img src="{{ childrenhome.image.url }}" alt="{{ childrenhome.name }}" class="img-fluid">
+                  </div>
+              </div>
+          </div>
+      </div>
+    </div>
+    <style>
+      .animated-image {
+        animation: zoom-in-out 5s ease-in-out infinite alternate;
+    }
+    
+    @keyframes zoom-in-out {
+        0% {
+            transform: scale(1);
+        }
+        50% {
+            transform: scale(1.2);
+        }
+        100% {
+            transform: scale(1);
+        }
+    }
+    </style>
+  
+  
+    
+    <div class="col-md-8">
+      <p>Location: {{ childrenhome.location }}</p>
+      <p>Email: {{ childrenhome.email }}</p>
+      <p>Phone: {{ childrenhome.phone }}</p>
+      <p>County: {{ childrenhome.county }}</p>
+      <p>Address: {{ childrenhome.address }}</p>
+      <p>Number of Children: {{ childrenhome.num_children }}</p>
+      <p>Age Group: {{ childrenhome.age_group }}</p>
+      <p>Main Challenges: {{ childrenhome.main_challenges }}</p>
+      <p>Activities: {{ childrenhome.activities }}</p>
+    </div>
+  </div>
+{% endblock %}
+

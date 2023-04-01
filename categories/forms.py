@@ -1,5 +1,5 @@
 from django.forms import ModelForm
-from .models import Donor
+from .models import Donor, ChildrenHome
 
 
 
@@ -14,3 +14,8 @@ class DonorForm(ModelForm):
             "address",
             "county",
         ]
+
+class ChildrenHomeForm(ModelForm):
+    class Meta:
+        model = ChildrenHome
+        fields = '__all__'

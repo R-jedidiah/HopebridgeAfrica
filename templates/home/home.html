@@ -21,7 +21,7 @@
       <div class="col-md-4">
         <h2 class="text-success">Donate</h2>
         <p>Make a difference by donating to those in need. You can donate money, food, clothes, and other essential items.</p>
-        <a class="btn btn-outline-success" href="#">Donate Now</a>
+        <a class="btn btn-outline-success" href="{% url 'add-details' %}">Donate Now</a>
       </div>
       <div class="col-md-4">
         <h2 class="text-success">Request Help</h2>
@@ -53,7 +53,7 @@
           <h4 style="color: rgb(238, 109, 3);">Quick Links</h4>
           <ul class="list-unstyled">
             <li><a href="{% url 'home' %}">Home</a></li>
-            <li><a href="#">Donate</a></li>
+            <li><a href="{% url 'add-details' %}">Donate</a></li>
             <li><a href="#">Request Help</a></li>
             <li><a href="{% url 'signup' %}">Sign Up</a></li>
             <li><a href="#">Contact Us</a></li>
@@ -68,18 +68,7 @@
     
   </footer>
 
-  <!-- <style>
-    .bg-image{
-      background-image: url(static/image/home.png);
-      background-position: center;
-      background-repeat: no-repeat; 
-      height: 350px; 
-      width: 80%; 
-      background-size: cover;
-      
-    }
-   
-  </style> -->
+ 
   
 {% endblock %}
 
