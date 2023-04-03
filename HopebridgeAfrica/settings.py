@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'home',
     'accounts',
     'categories',
+    'django_bootstrap_carousel',
 ]
 
 MIDDLEWARE = [

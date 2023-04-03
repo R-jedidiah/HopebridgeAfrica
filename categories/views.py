@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.template import RequestContext
 from categories.models import Category
 from categories.models import ChildrenHome
 from django.shortcuts import render, get_object_or_404
@@ -28,6 +29,8 @@ def childrenhome_detail(request, pk):
     context = {'childrenhome': childrenhome}
     return render(request, 'categories/childrenhome_detail.html', context)
 
+
+
 def donor_create(request):
     form = DonorForm()
     if request.method == "POST":
@@ -44,7 +47,7 @@ def donor_create(request):
 def ChildrenHome_create(request):
     form = ChildrenHomeForm()
     if request.method == "POST":
-        form = ChildrenHomeForm(request.POST)
+        form = ChildrenHomeForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
         return redirect('home')
