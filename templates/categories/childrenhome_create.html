@@ -3,18 +3,97 @@
 
 
 {% block content %}
-
-<div class="container">
-  <h1>Create Children Home</h1>
-  <hr>
-  <form method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <div class="form-group">
-      <input type="submit" class="btn btn-primary" value="submit">
-     
+  <div class="container mt-4">
+    <div class="row justify-content-center">
+      <div class="col-md-12">
+        <div class="card" style="border: 2px solid rgb(6, 41, 14);">
+          <div class="card-header" style="background-color: rgb(6, 41, 14);"><h1 style="text-align: center; color: aliceblue;">Add the following details</h1></div>
+          <div class="card-body">
+            <form method="post" enctype="multipart/form-data">
+              {% csrf_token %}
+              <div class="row">
+                <div class="col-md-4">
+                    {{ form.name.label_tag }} {{ form.name }}
+                </div>
+                <div class="col-md-4">
+                    {{ form.category.label_tag }} {{ form.category }}
+                </div>
+                <div class="col-md-4">
+                    {{ form.location.label_tag }} {{ form.location }}
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-4">
+                    {{ form.email.label_tag }} {{ form.email }}
+                </div>
+                <div class="col-md-4">
+                    {{ form.county.label_tag }} {{ form.county }}
+                </div>
+                <div class="col-md-4">
+                    {{ form.phone.label_tag }} {{ form.phone }}
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-4">
+                    {{ form.address.label_tag }} {{ form.address }}
+                </div>
+                <div class="col-md-4">
+                    {{ form.num_children.label_tag }} {{ form.num_children }}
+                </div>
+                <div class="col-md-4">
+                    {{ form.age_group.label_tag }} {{ form.age_group }}
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-4">
+                    {{ form.about_us.label_tag }} {{ form.about_us }}
+                </div>
+                <div class="col-md-4">
+                    {{ form.activities.label_tag }} {{ form.activities }}
+                </div>
+                <div class="col-md-4">
+                    {{ form.main_challenges.label_tag }} {{ form.main_challenges }}
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-4">
+                    {{ form.image1.label_tag }} {{ form.image1 }}
+                </div>
+                <div class="col-md-4">
+                    {{ form.image2.label_tag }} {{ form.image2 }}
+                </div>
+                <div class="col-md-4">
+                    {{ form.image3.label_tag }} {{ form.image3 }}
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-4">
+                    {{ form.management_details.label_tag }} {{ form.management_details }}
+                </div>
+                <div class="col-md-4">
+                    {{ form.management_image.label_tag }} {{ form.management_image }}
+                </div>
+              </div>
+            
+              <div class="text-center">
+                <button type="submit" class="btn btn-outline-success btn-lg">Create</button>
+              </div>
+            </form>
+            <style>
+              label {
+                color: rgb(228, 117, 26);
+              }
+              
+            </style>
+          </div>
+        </div>
+      </div>
     </div>
-  </form>
-</div>
+  </div>
 
-{% endblock %}
+              
+
+
+
+{% endblock %}              
+              

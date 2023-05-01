@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block content %}
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-md-3">
+      <div class="card">
+        <div class="card-header">
+          {% if donor.avatar %}
+            <img src="{{ donor.avatar.url }}" alt="{{ donor.first_name }} {{ donor.last_name }}" class="rounded-circle" width="110" height="130">
+          {% else %}
+            <img src="{% static 'path/to/default/image.png' %}" alt="Default Image" class="rounded-circle" width="90">
+          {% endif %}
+
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">{{ donor.first_name }} {{ donor.last_name }}</h5>
+          <p class="card-text">{{ donor.email }}</p>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">
+            <a href="{% url 'donor_update' %}" class="btn btn-outline-success btn-block">Update Profile</a>
+          </li>
+          <li class="list-group-item">
+            <a href="{% url 'dashboard' %}" class="btn btn-outline-success btn-block">Delete Profile</a>
+          </li>
+        </ul>
+        
+      </div>
+    </div>
+    
+  </div>
+</div>
+{% endblock %}

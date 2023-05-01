@@ -5,27 +5,30 @@ from django.contrib.auth import login, authenticate, logout
 from .forms import DonorSignUpForm
 from .forms import SignInForm
 from django.contrib import messages
-
-
-
-
-# Create your views here.
+from categories.models import Donor
 
 def register(request):
     if request.method == 'POST':
         form = DonorSignUpForm(request.POST)
         if form.is_valid():
-            form.save()
-            username = form.cleaned_data.get('username')
-            signup_user = User.objects.get(username=username)
-            
-            print('user created')
+            user = form.save(commit=False)
+            if User.objects.filter(username=user.username).exists():
+                # If the username already exists, return an error message
+                form.add_error('username', 'A user with that username already exists.')
+            else:
+                user.save()
+                # Create a new donor object for the newly registered user
+                donor = Donor.objects.create(user=user)
+                # Log in the user
+                login(request, user)
+                return redirect('home')
+    else:
+        form = DonorSignUpForm()
+    return render(request, 'registration/signup.html', {'form': form})
 
             
         
-    else:
-            form = DonorSignUpForm()
-    return render(request, 'registration/signup.html', {'form':form})
+    
 
 
 
@@ -50,6 +53,10 @@ def signin(request):
 def logout_view(request):
     logout(request)
     return redirect('')
+
+def logout_on_session_expiry(request):
+    if not request.session.get_expiry_age():
+        logout(request)
 
 
 

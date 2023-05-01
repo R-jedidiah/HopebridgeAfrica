@@ -61,7 +61,7 @@
           <p class="card-text"><strong>Phone:</strong> {{ children_home.phone }}</p>
           <p class="card-text"><strong>County:</strong> {{ children_home.county }}</p>
           <p class="card-text"><strong>Address:</strong> {{ children_home.address }}</p>
-          <a href="#" class="btn btn-outline-success">View More Details</a>
+          <a href="{% url 'childrenhome_detail' pk=children_home.pk %}" class="btn btn-outline-success">View More Details</a>
           {% endif %}
         </div>
       </div>

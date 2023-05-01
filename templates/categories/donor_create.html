@@ -1,55 +1,52 @@
 {% extends 'base.html' %}
 
+
+
+{% load widget_tweaks %}
+
+
+
 {% block content %}
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-
-    
-    <input type="submit" value="submit">
-
-</form>
-
- 
-<div class="container rounded bg-white mt-5 mb-5">
-    <div class="row">
-        <div class="col-md-3 border-right">
-            <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"><span class="font-weight-bold">Edogaru</span><span class="text-black-50">edogaru@mail.com.my</span><span> </span></div>
+  <div class="container mt-4">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="card" style="border: 2px solid rgb(6, 41, 14)">
+          <div class="card-header" style="background-color: rgb(6, 41, 14);"><h1 style="text-align: center;color: aliceblue;">Add your Details</h1></div>
+          <div class="card-body">
+            <form method="post">
+              {% csrf_token %}
+              {{ form.as_p }}
+              <div class="text-center">
+                <button type="submit" class="btn btn-outline-success btn-lg">Create</button>
+              </div>
+              <style>
+                label {
+                  color: rgb(228, 117, 26);
+                }
+                
+              </style>
+            </form>
+          </div>
+          <style>
+            .card {
+            animation: pulse-border 2s infinite;
+          }
+          
+          @keyframes pulse-border {
+            0% {
+              border-color: #031a05;
+            }
+            50% {
+              border-color: #e68b02;
+            }
+            100% {
+              border-color: #031a05;
+            }
+          }
+          </style>
         </div>
-        <div class="col-md-5 border-right">
-            <div class="p-3 py-5">
-                <div class="d-flex justify-content-between align-items-center mb-3">
-                    <h4 class="text-right">Profile Information</h4>
-                </div>
-                <form method="post">
-                  {% csrf_token %}
-                    <div class="row mt-2">
-                        <div class="col-md-6"><label for="id_first_name">First name:</label><input type="text" name="first_name" maxlength="155" required="" id="id_first_name" class="form-control" placeholder="first name"></div>
-                        <div class="col-md-6"><label for="id_last_name">Last name:</label><input type="text" name="last_name" maxlength="155" required="" id="id_last_name" class="form-control" placeholder="last name"></div>
-                    </div>
-                    <div class="row mt-3">
-                        <!-- <div class="col-md-12"><label class="labels">Mobile Number</label><input type="text" class="form-control" placeholder="enter phone number" value=""></div> -->
-                        
-                        <div class="col-md-12"><label for="id_email">Email:</label><input type="email" name="email" maxlength="254" required="" id="id_email" class="form-control" placeholder="enter your email"></div>
-                        <div class="col-md-12"><label for="id_adress">Adress:</label><input type="text" name="adress" maxlength="155" required="" id="id_adress" class="form-control" placeholder="enter your address"></div>
-                        <div class="col-md-12"><label for="id_county">County:</label><input type="text" name="county" maxlength="155" required="" id="id_county" class="form-control" placeholder="enter your current county"></div>
-                        <!-- <div class="col-md-12"><label class="labels">Area</label><input type="text" class="form-control" placeholder="enter address line 2" value=""></div>                    
-                        <div class="col-md-12"><label class="labels">Education</label><input type="text" class="form-control" placeholder="education" value=""></div> -->
-                    </div>
-                    <div class="row mt-3">
-                    
-                    </div>
-                    <div class="mt-5 text-center"><input type="submit" value="Save Profile"> </div>
-                </form>
-        </div>
-        <div class="col-md-4">
-            <div class="p-3 py-5">
-                <!-- <div class="col-md-12"><label class="labels">Your major motivation towards giving</label><input type="text" class="form-control" placeholder="experience" value=""></div> <br>
-                <div class="col-md-12"><label class="labels">Additional Details</label><input type="text" class="form-control" placeholder="additional details" value=""></div>
-            </div> -->
-        </div>
+      </div>
     </div>
-</div>
-
-
+  </div>
 {% endblock %}
+

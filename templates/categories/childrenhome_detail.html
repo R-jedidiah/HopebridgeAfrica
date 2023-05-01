@@ -1,16 +1,57 @@
 {% extends 'base.html' %}
 
-{% block content %}
-
 {% load static %}
 
+{% block content %}
 
+<h1 class="text-center animate__animated animate__bounce py-4">{{ childrenhome.name }}</h1>
 
+<style>
+  .text-center {
+    text-align: center;
+    font-weight: 500;
+  }
+  
+  .animate__animated {
+    animation-duration: 1s;
+    animation-fill-mode: both;
+  }
+  
+  .animate__bounce {
+    animation-name: bounce;
+  }
+  
+  @keyframes bounce {
+    from, 20%, 53%, 80%, to {
+      animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+      transform: translate3d(0,0,0);
+    }
+  
+    40%, 43% {
+      animation-timing-function: cubic-bezier(0.755, 0.050, 0.855, 0.060);
+      transform: translate3d(0, -30px, 0);
+    }
+  
+    70% {
+      animation-timing-function: cubic-bezier(0.755, 0.050, 0.855, 0.060);
+      transform: translate3d(0, -15px, 0);
+    }
+  
+    90% {
+      transform: translate3d(0,-4px,0);
+    }
+  }
+</style>
 
-
-
-  <h1>{{ childrenhome.name }}</h1>
-  <div id="carouselExampleCaptions" class="carousel slide" style="background-image: url('static/image/childrenhome1.jpg');">
+<div class="container1 mx-auto">
+<style>  
+.container1 {
+  background-image: url('https://cdn.discordapp.com/attachments/997266746379612160/1084107851334688778/Swifty_init_design_the_logo_with_the_letter_h_and_b_vibrant_whi_530fc23e-c871-491f-a47b-af8b14a8278f.png');
+  background-position: center;
+  background-size: cover;
+}
+</style>
+  <div id="carouselExampleCaptions" class="carousel slide">
     <div class="carousel-indicators">
       <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
       <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
@@ -38,79 +79,337 @@
           <p>Some representative placeholder content for the third slide.</p>
         </div>
       </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>  
     </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
-  </div>
+   
+  </div>  
 
   <style>
   .carousel-inner img{
     height: 500px;
   }
   .carousel-inner{
-    width: 80%;
+    width: 70%;
+    border-radius: 4%;
   }
+  .carousel-item {
+  opacity: 0;
+  -webkit-animation: carousel-animation 6s infinite;
+  animation: carousel-animation 6s infinite;
+  }
+
+  .carousel-item.active {
+    opacity: 1;
+  }
+
+  @-webkit-keyframes carousel-animation {
+    0%, 100% {
+      opacity: 0;
+      -webkit-transform: scale(1.1);
+      transform: scale(1.1);
+    }
+    10%, 90% {
+      opacity: 1;
+      -webkit-transform: scale(1);
+      transform: scale(1);
+    }
+  }
+
+  @keyframes carousel-animation {
+    0%, 100% {
+      opacity: 0;
+      -webkit-transform: scale(1.1);
+      transform: scale(1.1);
+    }
+    10%, 90% {
+      opacity: 1;
+      -webkit-transform: scale(1);
+      transform: scale(1);
+    }
+  }
+
+
+
   </style>
+</div>  
 
-<div class="row mx-auto">
-  <div class="col-6 col-sm-3 det"><h2>Email</h2></div>
-  <div class="col-6 col-sm-3 det"><h2>Phone number</h2></div>
-  <div class="col-6 col-sm-3 det"><h2>Adress</h2></div>
 
-  <!-- Force next columns to break to new line -->
-  <div class="w-100"></div>
 
-  <div class="col-6 col-sm-3 dot"><h4>{{ childrenhome.email }}</h4></div>
-  <div class="col-6 col-sm-3 dot"><h4>{{ childrenhome.phone }}</h4></div>
-  <div class="col-6 col-sm-3 dot"><h4>{{ childrenhome.address }}</h4></div>
+<script>
+  setInterval(function() {
+    document.querySelector('#carouselExampleCaptions .carousel-control-next').click();
+  }, 6000);
+</script>
 
-  <style>
-    .det{
-      background-color: rgb(6, 20, 6);
-    
-    }
-    .row{
-      padding-top: 5%;
-      padding-left: 5%;
-      height: 6cm;
-    }
-    .det h2{
-      color: antiquewhite;
-    }
-  </style>
-</div>
+
 
 
 <div class="container my-5" style="width: 22cm; height: 8cm;">
   <div class="jumbotron border-animated">
     <h2 class="display-4">About Us</h2>
     <hr class="my-4">
-    <p>{{ childrenhome.about_us }}</p>
-    <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+    <p style="color: rgb(2, 26, 2); font-weight: bold;">{{ childrenhome.about_us }}</p>
+    
   </div>
 </div>
 
+<div class="container" style="width: 70%;">
+  <table class="table table-bordered" style="border: 3px solid rgb(231, 113, 2); /* Green border */">
+    <thead style="background-color: rgb(6, 24, 3); color: white;">
+      <tr>
+        <th class="text-center">Number of Children</th>
+        <th class="text-center">Age Group</th>
+        <th class="text-center">Address</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="text-center">{{ childrenhome.num_children }}</td>
+        <td class="text-center">{{ childrenhome.age_group }}</td>
+        <td class="text-center">{{ childrenhome.address }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
-  
-
-    
-    
-    <div class="col-md-8">
-      <p>Location: {{ childrenhome.location }}</p>
-      <p>Email: {{ childrenhome.email }}</p>
-      <p>Phone: {{ childrenhome.phone }}</p>
-      <p>Address: {{ childrenhome.address }}</p>
-      <p>Number of Children: {{ childrenhome.num_children }}</p>
-      <p>Age Group: {{ childrenhome.age_group }}</p>
-      <p>Main Challenges: {{ childrenhome.main_challenges }}</p>
-      <p>Activities: {{ childrenhome.activities }}</p>
+<section class="bg-light mx-auto">
+  <div class="container py-5">
+    <div class="row">
+      <div class="col-md-6">
+        <h2 class="fw-bold mb-4 text-center">Our Vission</h2>
+        <p class="lead mb-4">At [Children's Home Name], our mission is to [briefly describe the organization's mission and goals]. We believe that [explain the organization's core values and beliefs, and how they guide its work with children and families].</p>
+      </div>
+      <div class="col-md-6">
+        <h2 class="fw-bold mb-4 text-center">Our Mission</h2>
+        <p class="lead mb-4">At [Children's Home Name], our mission is to [briefly describe the organization's mission and goals]. We believe that [explain the organization's core values and beliefs, and how they guide its work with children and families].</p>
+      </div>
     </div>
   </div>
-{% endblock %}
+</section>
 
+
+
+
+
+<div class="container mx-auto" style="background-color: rgb(250, 250, 250); height: 12cm; border: 3px solid rgb(2, 24, 2)">
+
+ 
+  <div class="container2">
+    
+  <style>
+    .container2{
+    height: 11.85cm;
+    width: 50%;
+    position: absolute; right: 15cm;
+    background-image: url('{{ childrenhome.management_image.url }}');
+    background-color: blue;
+    background-size: cover;
+    background-position: center;
+    }
+  </style>
+  </div>
+
+  <div class="container3" style="background-color: rgb(250, 246, 246); border: 2px solid rgb(2, 24, 2)">
+    <h1 style="text-align: center; color: rgb(207, 89, 20);">
+      Managerial team
+    </h1>
+    <hr class="my-1" style="width: 10cm; position: absolute; left: 2.5cm;">
+    <P style="color: rgb(15, 15, 15); text-align: center; font-size: large; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">
+      {{ childrenhome.management_details }}
+    </P>
+
+    <style>
+      .container3{
+        height: 8cm;
+        width: 15cm;
+        position: absolute; left: 15cm; top: 43.5cm;
+      }
+    </style>
+
+  </div>
+</div>
+
+<section class="bg-light mx-auto" style="background-image: url('https://cdn.discordapp.com/attachments/997266746379612160/1084042486118371388/Swifty_init_design_the_logo_with_the_letter_h_and_b_a_md_black__9895cce3-dc77-48c9-8029-35f9a636436e.png'); background-size: cover; background-position: center;">
+  <div class="container-fluid py-5">
+    <div class="row justify-content-center">
+      <div class="col-md-8 mx-auto text-center">
+        <h2 class="fw-bold mb-4 text-white">Programs and Services</h2>
+        <p class="lead mb-4 text-white">At [Children's Home Name], we offer a range of programs and services to meet the diverse needs of children and families in our community. Our services include:</p>
+        <ul class="list-unstyled mb-4" style="color: rgb(242, 245, 241);">
+          <li><i class="bi bi-check-circle-fill text-success me-2"></i> Foster care and adoption</li>
+          <li><i class="bi bi-check-circle-fill text-success me-2"></i> Family reunification</li>
+          <li><i class="bi bi-check-circle-fill text-success me-2"></i> Counseling and mental health services</li>
+          <li><i class="bi bi-check-circle-fill text-success me-2"></i> Educational support and tutoring</li>
+          <li><i class="bi bi-check-circle-fill text-success me-2"></i> Recreational activities and outings</li>
+        </ul>
+        <a href="#" class="btn btn-lg btn-outline-success rounded-pill">Learn more</a>
+      </div>
+    </div>
+  </div>
+  <style>
+    .bg-light{
+      margin-top: 1cm;
+      width: 95%;
+    }
+  </style>
+</section>
+
+<div class="container" style="margin-top: 1cm;">
+  <div class="row">
+    <div class="col-md-6">
+      <h2 class="mb-4 text-center">Our Activities</h2>
+      <ul class="list-group">
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          Poultry farming
+          <span class="badge bg-primary rounded-pill">Ongoing</span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          Gardening
+          <span class="badge bg-success rounded-pill">Completed</span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          Creative arts
+          <span class="badge bg-warning rounded-pill">Upcoming</span>
+        </li>
+      </ul>
+    </div>
+    <div class="col-md-6">
+      <h2 class="mb-4 text-center">Challenges we face</h2>
+      <ul class="list-group">
+        <li class="list-group-item">Inadequate food supplies</li>
+        <li class="list-group-item">Lack of clean drinking water</li>
+        <li class="list-group-item">Insufficient funding</li>
+        <li class="list-group-item">Inadequate staffing</li>
+      </ul>
+    </div>
+  </div>
+  <style>
+    .list-group .list-group-item{
+      border-color: green;
+    }
+  </style>
+</div>
+
+<section class="media-gallery">
+  <div class="container">
+    <h2 class="text-center mb-4">Media Gallery</h2>
+    <p class="text-center mb-4">Check out our latest photos and videos.</p>
+    <div class="row">
+      <div class="col-md-4 mb-4">
+        <a href="#" class="media-item">
+          <img src="https://cdn.discordapp.com/attachments/997266746379612160/1084042613407088720/Swifty_init_design_the_logo_with_the_letter_h_and_b_a_md_black__7d3c21ee-bfd7-4861-9e94-6ef1b9bcaaf7.png" alt="Image 1" class="img-fluid">
+        </a>
+      </div>
+      <div class="col-md-4 mb-4">
+        <a href="#" class="media-item">
+          <img src="https://cdn.discordapp.com/attachments/997266746379612160/1084042162532003880/Swifty_init_design_the_logo_with_the_letter_h_and_b_a_md_black__335126d6-532c-4363-8943-2fe936e2ec3a.png" alt="Image 2" class="img-fluid">
+        </a>
+      </div>
+      <div class="col-md-4 mb-4">
+        <a href="#" class="media-item">
+          <img src="https://cdn.discordapp.com/attachments/997266746379612160/1084042797990031360/Swifty_init_design_the_logo_with_the_letter_h_and_b_a_md_black__9e145d77-acc5-4d40-b0b2-f2a103357448.png" alt="Image 3" class="img-fluid">
+        </a>
+      </div>
+    </div>
+    <div class="text-center">
+      <a href="/gallery" class="btn btn-success">View More</a>
+    </div>
+  </div>
+  <style>
+  .media-gallery {
+  position: relative;
+  text-align: center;
+  padding: 50px;
+  }
+
+  .media-gallery a:before {
+    content: "";
+    position: absolute;
+    top: 28px;
+    left: 15px;
+    right: 15px;
+    bottom: 15px;
+    border: 2px solid green;
+    z-index: -1;
+    border-radius: 10px;
+    opacity: 1;
+    transition: opacity 0.5s, transform 0.5s;
+    transform: scale(0.8);
+  }
+
+  .media-gallery a:hover:before {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  .media-gallery a:hover {
+    background-color: #063606;
+  }
+
+  </style>
+</section>
+
+
+
+
+
+
+<!-- template.html -->
+<div class="container4">
+  <h2 class="mb-4">Contact Us</h2>
+  <form method="post">
+    {% csrf_token %}
+    <div class="form-group row mb-2">
+      <label for="id_name" class="col-sm-1 col-form-label">Name:</label>
+      <div class="col-sm-4">
+        <input type="text" class="form-control" id="id_name" name="name" placeholder="Your Name">
+      </div>
+    </div>
+    <div class="form-group row mb-2">
+      <label for="id_email" class="col-sm-1 col-form-label">Email:</label>
+      <div class="col-sm-4">
+        <input type="email" class="form-control" id="id_email" name="email" placeholder="Your Email">
+      </div>
+    </div>
+    <div class="form-group row mb-2">
+      <label for="id_subject" class="col-sm-1 col-form-label">Subject:</label>
+      <div class="col-sm-4">
+        <input type="text" class="form-control" id="id_subject" name="subject" placeholder="Subject">
+      </div>
+    </div>
+    <div class="form-group row mb-2">
+      <label for="id_message" class="col-sm-1 col-form-label">Message:</label>
+      <div class="col-sm-4">
+        <textarea class="form-control" id="id_message" name="message" rows="5" placeholder="Your Message"></textarea>
+      </div>
+    </div>
+    <button type="submit" class="btn btn-outline-success">Send</button>
+  </form>
+  <style>
+  .form-group input,
+  .form-group textarea {
+    border: 2px solid rgb(211, 130, 10);
+  }
+  .container4{
+    margin-top: 1cm;
+  }
+  label{
+    color: rgb(10, 51, 7);
+    size: 5px;
+  }
+  
+
+
+  </style>
+</div>  
+
+
+{% endblock %}

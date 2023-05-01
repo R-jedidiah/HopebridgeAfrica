@@ -12,27 +12,46 @@
       <p class="lead">Connect with donors and receive help in times of need</p>
       <hr class="bg-secondary my-4">
       <p>Join our community today and make a difference in the lives of others</p>
-      <a class="btn btn-outline-success btn-lg" href="{% url 'signup' %}">Sign Up Now</a>
+      <!-- <a class="btn btn-outline-success btn-lg" href="{% url 'signup' %}">Sign Up Now</a> -->
     </div>
   </div>
 
   <div class="container py-5">
     <div class="row">
       <div class="col-md-4">
+        {% if user.is_authenticated %}
+            {% if user.donor %}
+              <h2 class="text-success">Welcome Donor!</h2>
+              <p>You can view and respond to the needs and help requests from the less fortunate in our community.</p>
+              <a class="btn btn-outline-success" href="#">View Requests</a>
+            {% else %}
+              <h2 class="text-success">Become a Donor</h2>
+              <p>Fill out the required information to become a donor and start helping our community.</p>
+              <a class="btn btn-outline-success" href="{% url 'add-details' %}">Become a Donor</a>
+            {% endif %}
+        {% else %}
+            <h2 class="text-success">Donate</h2>
+            <p>Make a difference by donating to those in need. You can donate money, food, clothes, and other essential items.</p>
+            <a class="btn btn-outline-success" href="{% url 'add-details' %}">Donate Now</a>               
+        {% endif %}        
+      </div>
+      <div class="col-md-4">
+        {% if user.donor %}
         <h2 class="text-success">Donate</h2>
         <p>Make a difference by donating to those in need. You can donate money, food, clothes, and other essential items.</p>
-        <a class="btn btn-outline-success" href="{% url 'add-details' %}">Donate Now</a>
-      </div>
-      <div class="col-md-4">
+        <a class="btn btn-outline-success" href="#">Donate Now</a>
+        {% else %}  
         <h2 class="text-success">Request Help</h2>
         <p>If you're in need of help, you can request it from our community of donors. You can request money, food, clothes, and other essential items.</p>
-        <a class="btn btn-outline-success" href="{ %url 'requesthelp' %}">Request Help</a>
-      </div>
+        <a class="btn btn-outline-success" href="{% url 'requesthelp' %}">Request Help</a>
+        {% endif %}            
+      </div>     
       <div class="col-md-4">
-        <h2 class="text-success">Join Our Community</h2>
-        <p>Join our community of donors and recipients today. You can make a difference in the lives of others and receive help when you need it.</p>
-        <a class="btn btn-outline-success" href="{% url 'signup' %}">Join Now</a>
+        <h2 class="text-success">Our Community</h2>
+        <p>Glad you are part of our community of donors and recipients today. You can make a difference in the lives of others and receive help when you need it.</p>
+        <!-- <a class="btn btn-outline-success" href="{% url 'signup' %}">Join Now</a> -->
       </div>
+     
     </div>
   </div>
 
@@ -68,7 +87,10 @@
     
   </footer>
 
+
+{% endblock %}
+
  
   
-{% endblock %}
+
 

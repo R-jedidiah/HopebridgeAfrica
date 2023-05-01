@@ -5,6 +5,11 @@ from categories.models import ChildrenHome
 from django.shortcuts import render, get_object_or_404
 from .forms import DonorForm
 from .forms import ChildrenHomeForm
+from django.contrib.auth.decorators import login_required
+from categories.models import Donor
+from django.db import IntegrityError
+from django.core.mail import send_mail
+from .forms import ContactForm
 
 
 
@@ -30,19 +35,25 @@ def childrenhome_detail(request, pk):
     return render(request, 'categories/childrenhome_detail.html', context)
 
 
-
+@login_required
 def donor_create(request):
     form = DonorForm()
     if request.method == "POST":
         form = DonorForm(request.POST)
-        if form.is_valid():
-            form.save()
-        return redirect('home')
+        try:
+            if form.is_valid():
+                donor = form.save(commit=False)
+                donor.user = request.user
+                donor.save()
+                return redirect('home')
+        except IntegrityError:
+                form.add_error('first_name', 'A donor with that username already exists.')    
     
     context = {
         'form':form
     }
     return render(request, 'categories/donor_create.html', context)
+
 
 def ChildrenHome_create(request):
     form = ChildrenHomeForm()
@@ -57,6 +68,33 @@ def ChildrenHome_create(request):
     }
     return render(request, 'categories/childrenhome_create.html', context)
 
+def contact_childrenhome(request, pk):
+    childrenhome = ChildrenHome.objects.get(pk=pk)
+
+    if request.method == 'POST':
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            name = form.cleaned_data['name']
+            email = form.cleaned_data['email']
+            message = form.cleaned_data['message']
+
+            # send email
+            subject = f"Contact form submission from {name}"
+            from_email = email
+            to_email = childrenhome.email
+            message = f"You have a new message from {name} ({email}):\n\n{message}"
+            send_mail(subject, message, from_email, [to_email], fail_silently=False)
+
+            # redirect to success page
+            return render(request, 'success.html')
+    else:
+        form = ContactForm()
+
+    context = {
+        'form': form,
+        'childrenhome': childrenhome,
+    }
+    return render(request, 'chilrenhome_detail.html', context)
 
 
 

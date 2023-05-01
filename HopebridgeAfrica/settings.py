@@ -42,6 +42,9 @@ INSTALLED_APPS = [
     'accounts',
     'categories',
     'django_bootstrap_carousel',
+    'request_help',
+    'widget_tweaks',
+    'donors',
 ]
 
 MIDDLEWARE = [
@@ -52,6 +55,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'accounts.middleware.LogoutOnSessionExpiryMiddleware',
 ]
 
 ROOT_URLCONF = 'HopebridgeAfrica.urls'
@@ -140,3 +144,15 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'static/img')
 
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = '/'
+
+# Email settings
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'odiwuorrobert9@gmail.com'
+EMAIL_HOST_PASSWORD = 'ejewvqygcbflyxsv'
+
+SESSION_COOKIE_AGE = 60 * 60 * 2 # 2 hours in seconds
+
+

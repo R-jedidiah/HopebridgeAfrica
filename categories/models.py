@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 
 
@@ -17,15 +18,18 @@ class Category(models.Model):
     def __str__(self):
         return self.type
 
-
+        
 
 
 class Donor(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     first_name = models.CharField(max_length=155)
     last_name = models.CharField(max_length=155)
     email = models.EmailField()
     address = models.CharField(max_length=155)
     county = models.CharField(max_length=255)
+    avatar = models.ImageField(upload_to='donor_image')
+
 
 
     def __str__(self):
@@ -48,6 +52,8 @@ class ChildrenHome(models.Model):
     image3 = models.ImageField(upload_to='childrenhomes_media')
     num_children = models.PositiveIntegerField()
     age_group = models.CharField(max_length=255)
+    management_details = models.CharField(max_length=500)
+    management_image = models.ImageField(upload_to='childrenhomes_media')
     main_challenges = models.TextField()
     activities = models.TextField()
 
