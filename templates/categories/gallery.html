@@ -1,0 +1,20 @@
+<!-- gallery.html -->
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+  <div class="container my-5">
+    <h1 class="text-center mb-4">Our Gallery</h1>
+    <div class="row row-cols-1 row-cols-md-3 g-3">
+      {% for image in images %}
+        <div class="col">
+          <div class="card h-100 border-0 shadow-sm">
+            <a href="{{ image.url }}" data-lightbox="gallery" data-title="{{ image.title }}">
+              <img src="{% static image.url %}" alt="{{ image.title }}" class="card-img-top rounded-0">
+            </a>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+{% endblock %}

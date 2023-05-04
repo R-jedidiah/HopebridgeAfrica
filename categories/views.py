@@ -10,6 +10,9 @@ from categories.models import Donor
 from django.db import IntegrityError
 from django.core.mail import send_mail
 from .forms import ContactForm
+import os
+from django.conf import settings
+
 
 
 
@@ -95,6 +98,26 @@ def contact_childrenhome(request, pk):
         'childrenhome': childrenhome,
     }
     return render(request, 'chilrenhome_detail.html', context)
+
+
+
+def gallery(request, pk):
+    # Retrieve the children's home object using the primary key from the URL.
+    childrenhome = get_object_or_404(ChildrenHome, pk=pk)
+
+    images = []
+    # Use the primary key of the children's home to create the path to the subdirectory containing the images.
+    images_dir = os.path.join(settings.MEDIA_ROOT, 'gallery', str(pk))
+    for filename in os.listdir(images_dir):
+        if filename.endswith('.jpg') or filename.endswith('.png'):
+            path = os.path.join(images_dir, filename)
+            title = os.path.splitext(filename)[0].title()
+            images.append({'url': path, 'title': title})
+
+    context = {'images': images, 'childrenhome': childrenhome}
+    return render(request, 'categories/gallery.html', context)
+
+
 
 
 
