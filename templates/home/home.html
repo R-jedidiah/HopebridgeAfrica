@@ -73,7 +73,7 @@
           <ul class="list-unstyled">
             <li><a href="{% url 'home' %}">Home</a></li>
             <li><a href="{% url 'add-details' %}">Donate</a></li>
-            <li><a href="#">Request Help</a></li>
+            <li><a href="{% url 'requesthelp' %}">Request Help</a></li>
             <li><a href="{% url 'signup' %}">Sign Up</a></li>
             <li><a href="#">Contact Us</a></li>
           </ul>
@@ -82,6 +82,12 @@
           <h4 style="color: rgb(238, 109, 3);">About Us</h4>
           <p style="color: white;">HopebridgeAfrica is a platform dedicated to helping people in need. Our mission is to connect donors with those who need help and to make a difference in the lives of others. Join our community today and be a part of the change.</p>
         </div>
+        <style>
+          .list-unstyled li a {
+          color: white;
+        }
+
+        </style>
       </div>
     </div>
     

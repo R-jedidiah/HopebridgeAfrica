@@ -30,39 +30,47 @@
         <span class="navbar-toggler-icon"></span>
         </button>
     </div>  
-        <div class="navbar-collapse" style="padding-right: 1cm;" id="navbarNav">
+    <div class="navbar-collapse" style="padding-right: 1cm;" id="navbarNav">
         <ul class="navbar-nav">
-            {% if user.is_authenticated%}
-            <li class="nav-item active">
-            <a class="btn btn-outline-white text-white" href="{% url 'home' %}">Home</a>
-            </li>
-            <li class="nav-item">
-            <a class="btn btn-outline-white text-white" href="#">Donate</a>
-            </li>
-            <li class="nav-item">
-            <a class="btn btn-outline-white text-white" href="{% url 'requesthelp' %}">RequestHelp</a>
-            {% endif %}
-            </li>
-            <li class="nav-item">
-            <a class="btn btn-outline-white text-white" href="{% url 'categories' %}">Categories</a>
-            </li>
             {% if user.is_authenticated %}
+            <li class="nav-item active">
+                <a class="btn btn-outline-white text-white" href="{% url 'home' %}">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="btn btn-outline-white text-white" href="#">Donate</a>
+            </li>
+            <li class="nav-item">
+                <a class="btn btn-outline-white text-white" href="{% url 'requesthelp' %}">RequestHelp</a>
+            </li>
+            <li class="nav-item">
+                <a class="btn btn-outline-white text-white" href="{% url 'categories' %}">Categories</a>
+            </li>
             <li class="nav-item">
                 <a class="btn btn-outline-white text-white" href="{% url 'logout' %}">Logout</a>
             </li>
             {% else %}
             <li class="nav-item">
-            <a class="btn btn-outline-white text-white" href="{% url 'signin' %}">SignIn</a>
+                <a class="btn btn-outline-white text-white" href="{% url 'signin' %}">SignIn</a>
             </li>
             <li class="nav-item">
-            <a class="btn btn-outline-white text-white" href="{% url 'signup' %}">signup</a>
+                <a class="btn btn-outline-white text-white" href="{% url 'signup' %}">signup</a>
             </li>
-            
             {% endif %}
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="navbarDropdownMenuLink"
+                  role="button" data-mdb-toggle="dropdown" aria-expanded="false">
+                  <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img (31).webp" class="rounded-circle"
+                    height="22" alt="Avatar" loading="lazy" />
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                  <li>
+                    <a class="dropdown-item" href="#">My profile</a>
+                  </li>
+                </ul>
+            </li>
         </ul>
-        </div>
+    </div>
 </nav>
-
 
 
 

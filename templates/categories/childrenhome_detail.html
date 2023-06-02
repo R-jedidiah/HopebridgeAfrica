@@ -44,13 +44,9 @@
 </style>
 
 <div class="container1 mx-auto">
-<style>  
-.container1 {
-  background-image: url('https://cdn.discordapp.com/attachments/997266746379612160/1084107851334688778/Swifty_init_design_the_logo_with_the_letter_h_and_b_vibrant_whi_530fc23e-c871-491f-a47b-af8b14a8278f.png');
-  background-position: center;
-  background-size: cover;
-}
-</style>
+  <!-- <svg viewBox="-50 70 300 120" xmlns="http://www.w3.org/2000/svg">
+    <path fill="#24A148" d="M49.5,-49.7C62.3,-36.6,69.7,-18.3,71.2,1.4C72.6,21.2,68.1,42.4,55.2,56.6C42.4,70.9,21.2,78.2,4.7,73.5C-11.8,68.8,-23.7,52.1,-35.6,37.9C-47.6,23.7,-59.7,11.8,-60,-0.2C-60.2,-12.3,-48.6,-24.6,-36.6,-37.8C-24.6,-50.9,-12.3,-64.9,3,-67.9C18.3,-70.9,36.6,-62.9,49.5,-49.7Z" transform="translate(100 100)" />
+  </svg> -->
   <div id="carouselExampleCaptions" class="carousel slide">
     <div class="carousel-indicators">
       <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -98,7 +94,7 @@
   }
   .carousel-inner{
     width: 70%;
-    border-radius: 4%;
+    border-radius: 10%;
   }
   .carousel-item {
   opacity: 0;
@@ -135,6 +131,7 @@
       transform: scale(1);
     }
   }
+
 
 
 
@@ -199,29 +196,30 @@
 
 
 
-<div class="container mx-auto" style="background-color: rgb(250, 250, 250); height: 12cm; border: 3px solid rgb(2, 24, 2)">
+
+<div class="container row mx-auto" style="background-color: rgb(250, 250, 250); height: 12cm; border: 3px solid rgb(2, 24, 2); position: relative;">
 
  
-  <div class="container2">
+  <div class="container2 col-md-6">
     
   <style>
     .container2{
     height: 11.85cm;
     width: 50%;
-    position: absolute; right: 15cm;
     background-image: url('{{ childrenhome.management_image.url }}');
     background-color: blue;
     background-size: cover;
     background-position: center;
+    position: absolute; right: 15cm;
     }
   </style>
   </div>
 
-  <div class="container3" style="background-color: rgb(250, 246, 246); border: 2px solid rgb(2, 24, 2)">
+  <div class="container3 col-md-6" style="background-color: rgb(250, 246, 246); border: 2px solid rgb(2, 24, 2)">
     <h1 style="text-align: center; color: rgb(207, 89, 20);">
       Managerial team
     </h1>
-    <hr class="my-1" style="width: 10cm; position: absolute; left: 2.5cm;">
+    <hr class="my-1">
     <P style="color: rgb(15, 15, 15); text-align: center; font-size: large; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">
       {{ childrenhome.management_details }}
     </P>
@@ -229,8 +227,8 @@
     <style>
       .container3{
         height: 8cm;
-        width: 15cm;
-        position: absolute; left: 15cm; top: 43.5cm;
+        position: absolute; left: 13cm;
+        top: 2cm;
       }
     </style>
 
@@ -391,6 +389,12 @@
         <textarea class="form-control" id="id_message" name="message" rows="5" placeholder="Your Message"></textarea>
       </div>
     </div>
+    <style>
+      .form-control:focus {
+        border-color: rgb(6, 43, 6);
+        box-shadow: 0px 1px 6px 4px rgba(4,59,19,0.75); /* Optional: Add a box shadow for visual effect */
+      }
+    </style>
     <div class="col-sm-10 offset-sm-1">
       <button type="submit" class="btn btn-outline-success">Send</button>
     </div>
